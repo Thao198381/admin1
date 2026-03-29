@@ -1,7 +1,7 @@
 
 import { Topic, ExamCodeDefinition, NewsItem, FixedConfig } from './types';
 export const DEFAULT_API_URL = "https://script.google.com/macros/s/AKfycbx9Kym3rbEDC_BNHdcGLjYpzZbIQWVoBNDQ3rgmows76rONjJdoGZiQoeTpM6VSSDCdjw/exec";
-export const ADMIN_URL = "https://script.google.com/macros/s/AKfycbx9Kym3rbEDC_BNHdcGLjYpzZbIQWVoBNDQ3rgmows76rONjJdoGZiQoeTpM6VSSDCdjw/exec";
+export const KETQUA_URL = "https://script.google.com/macros/s/AKfycbw06Dnf2Spsrm19NseYX-mucqa8b8Ayg0ni8B2hZNGVmjb3uoGW7VGkKSnOepKeYFQdGQ/exec";
 export const SPREADSHEET_ID_ADMIN = "1LlFAI1J0b7YQ84BL674r2kr3wSoW9shgsXSIXVPDypM"; // Admin 1
 
 export const DANHGIA_URL = DEFAULT_API_URL;
