@@ -1193,27 +1193,23 @@ const handleRedirect = () => {
   SĂN QUÀ QUIZ
 </a>
            <div className="grid grid-cols-2 gap-2">
-             {[12, 11, 10].map(g => (
+{[12, 11, 10].map(g => (
 
-  <a
+  <button 
 
-    key={g}
+      key={g} 
 
-    href={`https://thayhabacninh.vercel.app/?grade=${g}`}
+      onClick={() => onSelectGrade(g)}
 
-    target="_blank"
+      className="bg-blue-600 text-white p-2.5 rounded-xl font-black text-[10px] uppercase border-b-4 border-blue-800 transition-all active:scale-95 flex items-center justify-center gap-2"
 
-    rel="noopener noreferrer"
+    >
 
-    className="bg-blue-600 text-white p-2.5 min-h-[44px] rounded-xl font-black text-xs uppercase border-b-4 border-blue-800 transition-all active:scale-95 touch-manipulation flex items-center justify-center gap-2"
+      <i className="fas fa-graduation-cap text-[10px]"></i> 
 
-  >
+      <span>Lớp {g}</span>
 
-    <i className="fas fa-graduation-cap text-xs"></i>
-
-    <span>Lớp {g}</span>
-
-  </a>
+    </button>
 
 ))}
 
