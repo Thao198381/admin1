@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { DANHGIA_URL, ADMIN_CONFIG, OTHER_APPS, API_ROUTING, DEFAULT_API_URL, fetchApiRouting } from '../config';
+import { DANHGIA_URL, ADMIN_CONFIG, OTHER_APPS, KETQUA_URL, DEFAULT_API_URL, fetchApiRouting } from '../config';
 import { AppUser, Student } from '../types';
 import { postToScript } from '../postToScript';
 import ExamRoom from './ExamRoom';
@@ -328,17 +328,12 @@ const scoreInfo = (() => {
   if (!idgv || !resetType) return;
 
   const fetchExams = async () => {
-    try {
-      if (!API_ROUTING[idgv]) {
-        await fetchApiRouting();
-      }
-
-      const baseUrl = API_ROUTING[idgv];
+    try {      
+      const baseUrl = KETQUA_URL;
       if (!baseUrl) {
   console.log("IDGV không tồn tại");
   return;
     }
-
       const res = await fetch(
         `${baseUrl}?action=getExamsList&type=${resetType}`
       );
@@ -364,12 +359,7 @@ const scoreInfo = (() => {
   if (resetMode === "byExams" && !resetExams) {
     return alert("Chọn mã exams");
   }
-
-  if (!API_ROUTING[idgv]) {
-    await fetchApiRouting();
-  }
-
-  const baseUrl = API_ROUTING[idgv];
+  const baseUrl = KETQUA_URL;
   if (!baseUrl) return alert("IDGV không tồn tại");
 
   const confirmDelete = window.confirm(
@@ -406,7 +396,7 @@ const scoreInfo = (() => {
       return;
     }
 
-    const url = API_ROUTING[idgv];
+    const url = KETQUA_URL;
     if (!url) {
       alert("Không tìm thấy API của giáo viên này");
       return;
@@ -433,7 +423,7 @@ const handleStudentSubmit = async (e) => {
   if (e && typeof e.preventDefault === 'function') e.preventDefault();
 
   const currentIDGV = studentInfo.idgv.toString().trim();
-  const targetUrl = API_ROUTING[currentIDGV];
+  const targetUrl = KETQUA_URL;
 
   if (!targetUrl) {
     alert(`❌ Không tìm thấy link Script của mã GV: "${currentIDGV}"`);
@@ -518,7 +508,7 @@ const handleSaveMatrix = async () => {
   }
 
   // 3. Tự động chọn Link Script dựa trên mã IDGV
-  const targetURL = API_ROUTING[idgv] || DEFAULT_API_URL;
+  const targetURL = KETQUA_URL;
 
   // 4. Gom dữ liệu vào Payload
   const payload = {
@@ -837,7 +827,7 @@ const handleRedirect = () => {
   setExamStarted(false); 
 
   const currentIDGV = studentInfo.idgv.toString().trim();
-  const targetUrl = API_ROUTING[currentIDGV];
+  const targetUrl = KETQUA_URL;
 
   try {
     const response = await fetch(targetUrl, {
@@ -904,7 +894,7 @@ const handleRedirect = () => {
       scoreSA={scoreSA}
       onFinish={async (resultData) => {
   setExamStarted(false);
-  const targetUrl = API_ROUTING[studentInfo.idgv];
+  const targetUrl = KETQUA_URL;
 
   // Hứng điểm an toàn: Kiểm tra cả totalScore và tongdiem để không bị undefined
   const rawScore = resultData.totalScore ?? resultData.tongdiem ?? 0;
