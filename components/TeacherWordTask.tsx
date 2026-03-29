@@ -222,7 +222,7 @@ const handleSaveQuestions = async (dataArray) => {
   if (!idgv) return alert("❌ Thầy chưa nhập ID Giáo viên!");
   if (!examCode) return alert("❌ Cần nhập Mã đề!");
   
-  const targetUrl = DANHGIA_URL;
+  const targetUrl = KETQUA_URL;
   if (!targetUrl) return alert("❌ Không tìm thấy Link Script cho ID này!");
 
   setLoading(true);
