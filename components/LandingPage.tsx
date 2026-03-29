@@ -913,6 +913,7 @@ const handleRedirect = () => {
   const payload = {
     action: "submitExam",
     timestamp: new Date().toLocaleString('vi-VN'),
+    idgv: String(studentInfo.idgv || ""),
     exams: String(studentInfo.examCode || "").toUpperCase(),
     sbd: String(studentInfo.sbd || ""),
     name: String(studentInfo.name || ""),
